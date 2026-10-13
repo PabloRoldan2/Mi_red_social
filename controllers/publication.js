@@ -1,4 +1,5 @@
 const Publication = require('../models/publication');
+const Like = require('../models/like'); // 👈 1. Importamos el modelo Like
 
 const publicacion = async (req, res) => {
     try {
@@ -23,7 +24,7 @@ const publicacion = async (req, res) => {
 
         // Si Multer guardó una imagen, la asociamos
         if (req.file) {
-            newPublication.file = req.file.filename; // O 'image', dependiendo de cómo lo tengas en tu esquema para la foto
+            newPublication.file = req.file.filename; 
         }
 
         // Guardamos en MongoDB
@@ -50,9 +51,21 @@ const feed = async (req, res) => {
             .sort({ created_at: -1 })
             .populate('user', 'name surname nick');
 
+        // 👇 2. Enriquecemos cada publicación con el total de likes y si el usuario actual ya dio like
+        const publicacionesConLikes = await Promise.all(publicaciones.map(async (pub) => {
+            const totalLikes = await Like.countDocuments({ publication: pub._id });
+            const miLike = await Like.findOne({ user: req.user.id, publication: pub._id });
+
+            return {
+                ...pub.toObject(),
+                totalLikes,
+                likedByMe: miLike ? true : false
+            };
+        }));
+
         return res.status(200).json({
             status: "success",
-            publicaciones
+            publicaciones: publicacionesConLikes // 👈 3. Devolvemos la lista modificada
         });
 
     } catch (error) {

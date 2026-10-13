@@ -17,10 +17,12 @@ app.use(express.urlencoded({ extended: true }));
 // 4. Cargar las rutas 
 const UserRoutes = require("./routes/user");
 const PublicationRoutes = require("./routes/publication");
+const LikeRoutes = require("./routes/like");
 
 // Prefijo para las rutas (por ejemplo: /api/user/register, /api/user/prueba, etc.)
 app.use("/api", UserRoutes);
 app.use("/api", PublicationRoutes);
+app.use("/api", LikeRoutes);
 
 // Hacer que la carpeta "uploads" sea accesible públicamente para ser accesible por URL
 app.use("/uploads", express.static("uploads"));
