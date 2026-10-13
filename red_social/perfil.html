@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="perfil.css">
+
+    <!--Script para verificar el token de autenticación y redirigir al login si no está presente -->
+    <!--<script>
+        // 1. Validar al cargar la página normalmente
+        document.addEventListener('DOMContentLoaded', () => {
+            verificarToken();
+        });
+
+        // 2. Validar cuando el usuario presiona el botón "Atrás" (carga desde la caché)
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                verificarToken();
+            }
+        });
+
+        function verificarToken() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                // Si no hay token, lo saca de inmediato al login y borra el historial
+                window.location.replace('login.html');
+            }
+        }
+    </script> -->
+
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <header class="navbar">
+        <h2>Red Social</h2>
+        <div class="nav-right">
+            <a href="index.html" class="btn-inicio">Inicio</a>
+            <a href="#" id="logout_btn" class="btn-logout">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="container">
+
+        <main class="feed">
+
+            <div id="formPerfil" class="card post">
+                <h1>Perfil de Usuario</h1>
+                <p><strong>Avatar:</strong></p>
+                <!-- Mostrar el avatar del usuario si existe, de lo contrario mostrar un avatar por defecto -->
+                <img id="user-avatar" class="avatar" src="" alt="Avatar del usuario"/>
+
+                <p><strong>Nombre:</strong> <span id="user-name"></span></p>
+                <p><strong>Nick:</strong> <span id="user-nick"></span></p>
+                <p><strong>Correo:</strong> <span id="user-email"></span></p>
+                <button id="Actualizar" class="btn-actualizar"
+                    onclick="window.location.href='actualizar_usuario.html'">Actualizar Perfil</button>
+                <button id="Cambiar_contrasenia" class="btn-actualizar_contrasenia"
+                    onclick="window.location.href='cambiar_contrasenia.html'">Cambiar Contraseña</button>
+                <button id="subir_avatar" class="btn-subir_avatar"
+                    onclick="window.location.href='subir_avatar.html'">Subir Avatar</button>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="perfil.js"></script>
+
+    <script>
+        // Función para cerrar sesión y redirigir al login
+        document.getElementById('logout_btn').addEventListener('click', function () {
+            localStorage.removeItem('token'); // Elimina el token de autenticación
+            localStorage.removeItem('user'); // Elimina el usuario del almacenamiento local
+            window.location.href = 'login.html'; // Redirige al login
+        });
+    </script>
+
+</body>
+
+</html>

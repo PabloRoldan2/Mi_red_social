@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="login.css">
+
+    <script>
+        // 1. Validar al cargar la página normalmente
+        document.addEventListener('DOMContentLoaded', () => {
+            // Limpiar el formulario al cargar la página
+            const formLogin = document.getElementById('formLogin');
+            if (formLogin) {
+                formLogin.reset();
+            }
+        });
+
+        // 2. Validar cuando el usuario presiona el botón "Atrás" (carga desde la caché)
+        window.addEventListener('pageshow', (event) => {
+            // Limpiar el formulario si la página se carga desde la caché
+            if (event.persisted) {
+                const formLogin = document.getElementById('formLogin');
+                if (formLogin) {
+                    formLogin.reset();
+                }
+            }
+        });
+    </script>
+
+</head>
+<body class="login-body">
+
+    <div class="login-card">
+        <h1>Red Social</h1>
+        <p>Conéctate con tus amigos</p>
+        
+        <!-- Formulario simulado que redirige al feed principal -->
+        <form id="formLogin" class="login-form">
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit" class="btn-primary btn-full">Iniciar Sesión</button>
+            <button type="button" class="btn-secondary btn-full" onclick="window.location.href='registrar_usuario.html'">Registrarse</button>
+        </form>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

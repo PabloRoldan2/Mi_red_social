@@ -1,0 +1,239 @@
+/* --- ESTILOS GENERALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #ffffffe7;
+    color: #333;
+}
+
+/* --- BARRA DE NAVEGACIÓN --- */
+.navbar {
+    background-color: #1e293b;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar h2 {
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.user-greeting {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.btn-logout {
+    text-decoration: none;
+    background-color: #fee2e2;
+    color: #dc2626;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.btn-logout:hover {
+    background-color: #fecaca;
+}
+
+.btn-perfil {
+    text-decoration: none;
+    background-color: #1d4ed8;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.btn-perfil:hover {
+    background-color: #0f36a1;
+}
+
+/* --- CONTENEDOR Y FEED --- */
+.container {
+    max-width: 650px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+}
+
+.card textarea {
+    width: 100%;
+    height: 65px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.8rem;
+    resize: none;
+    outline: none;
+    margin-bottom: 0.8rem;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    column-gap: 0.5rem;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- PUBLICACIONES --- */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.post-autor strong {
+    display: block;
+    font-size: 0.95rem;
+}
+
+.post-autor span {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.post p {
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+/* Botón de Seguir */
+.btn-follow {
+    background-color: #e0e7ff;
+    color: #2563eb;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-follow:hover {
+    background-color: #c7d2fe;
+}
+
+.btn-follow.following {
+    background-color: #e5e7eb;
+    color: #4b5563;
+}
+
+/* Acciones (Me gusta / Comentar) */
+.post-acciones {
+    display: flex;
+    gap: 1rem;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 0.6rem 0;
+    margin-bottom: 1rem;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.action-btn:hover {
+    color: #2563eb;
+}
+
+/* Comentarios */
+.comments-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+}
+
+.comment {
+    background-color: #f8fafc;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+}
+
+.comment-box {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+}
+
+.comment-box input {
+    flex: 1;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    font-size: 0.85rem;
+}
+
+.btn-small {
+    background-color: #e5e7eb;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.btn-small:hover {
+    background-color: #d1d5db;
+}
+
+.imagen_input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}

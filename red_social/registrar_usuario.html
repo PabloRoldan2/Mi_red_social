@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Usuario</title>
+    <link rel="stylesheet" href="registro_usuario.css">
+</head>
+<body class="login-body">
+
+    <div class="login-card">
+        <h1>Registro de usuario</h1>
+        
+        <!-- Formulario simulado que redirige al feed principal -->
+        <form id="formRegistrar" class="registro-form">
+            <input type="text" id="name" placeholder="Nombre" required>
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="text" id="nick" placeholder="Nombre de usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" required>
+            <button type="submit" class="btn-primary btn-full">Registrarse</button>
+            <button type="button" class="btn-secondary btn-full" onclick="window.location.href='login.html'">Iniciar Sesión </button>
+        </form>
+    </div>
+
+    <script src="registrar_usuario.js"></script>
+</body>
+</html>

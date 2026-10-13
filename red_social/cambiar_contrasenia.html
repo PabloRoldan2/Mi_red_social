@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Contraseña</title>
+    <link rel="stylesheet" href="cambiar_contrasenia.css">
+
+    <!--Script para verificar el token de autenticación y redirigir al login si no está presente -->
+    <script>
+        // 1. Validar al cargar la página normalmente
+        document.addEventListener('DOMContentLoaded', () => {
+            verificarToken();
+        });
+
+        // 2. Validar cuando el usuario presiona el botón "Atrás" (carga desde la caché)
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                verificarToken();
+            }
+        });
+
+        function verificarToken() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                // Si no hay token, lo saca de inmediato al login y borra el historial
+                window.location.replace('login.html');
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <header class="navbar">
+        <h2>Mi Red Social</h2>
+        <div class="nav-right">
+            <a href="index.html" class="btn-inicio">Inicio</a>
+            <a href="#" id="logout_btn" class="btn-logout">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="container">
+
+        <main class="feed">
+            <div class="card">
+                <form id="formActualizarContrasenia" class="form-actualizar">
+                    <h1>Cambiar Contraseña</h1>
+                    <p>Contraseña:</p><input type="password" id="password" required>
+                    <p>Confirmar contraseña:</p><input type="password" id="confirm_password" required>
+                    <p>¿Todo listo?</p><button type="submit" id="Actualizar" class="btn-actualizar">Actualizar Contraseña</button>
+                    <button id="Cancelar" class="btn-cancelar" onclick="window.location.href='perfil.html'">Cancelar</button>
+                </form>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="cambiar_contrasenia.js"></script>
+
+    <script>
+        // Función para cerrar sesión y redirigir al login
+        document.getElementById('logout_btn').addEventListener('click', function () {
+            localStorage.removeItem('token'); // Elimina el token de autenticación
+            localStorage.removeItem('user'); // Elimina el usuario del almacenamiento local
+            window.location.href = 'login.html'; // Redirige al login
+        });
+    </script>
+
+</body>
+
+</html>
