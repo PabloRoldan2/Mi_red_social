@@ -33,10 +33,10 @@ async function mostrarPublicaciones() {
                 div.style.marginTop = "20px";
                 div.style.padding = "1.5rem";
                 div.style.border = "1px solid #1e293b";
-                
+
                 //Configuración para el formato de la fecha y hora
                 const fechaOriginal = pub.created_at || pub.createdAt;
-                
+
                 const fechaFormateada = fechaOriginal ? new Date(fechaOriginal).toLocaleDateString("es-ES", {
                     year: 'numeric',
                     month: 'short',
@@ -45,12 +45,22 @@ async function mostrarPublicaciones() {
                     minute: '2-digit'
                 }) : "";
 
+                const usuarioYaDioLike = pub.likedByMe; // Supongamos que tu backend te manda esto (true/false)
+                const colorCorazon = usuarioYaDioLike ? "red" : "gray";
+
                 // Se inserta el contenido de la publicación
                 div.innerHTML = `
                         <p style="margin-bottom: 10px"><strong>${pub.user.name} ${pub.user.surname || ""}</strong> (@${pub.user.nick})</p>
                         <p style="font-size: 0.85rem; color: gray; margin-bottom: 10px;">${fechaFormateada}</p>
                         <p style="margin-bottom: 10px">${pub.text}</p>
                         ${pub.file ? `<img src="http://localhost:3900/uploads/${pub.file}" style="max-width:200px; border-radius:8px;" />` : ""}
+
+                        <div style="margin-top: 15px; display: flex; align-items: center; gap: 8px;">
+                            <button class="btn-like" data-id="${pub._id}" style="background: none; border: none; cursor: pointer; font-size: 1.1rem;">
+                                <span id="heart-${pub._id}" style="color: ${colorCorazon};">❤️</span> 
+                                <span id="count-${pub._id}">${pub.likesCount || 0}</span> Me gusta
+                            </button>
+                        </div>
                     `;
                 contenedor.appendChild(div);
             });
